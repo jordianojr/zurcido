@@ -180,10 +180,6 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <a className="brand" href={`${appBasePath}/client`} onClick={(event) => { event.preventDefault(); navigate('client') }} aria-label="Zurcido home"><span className="brand-mark">z</span><span>zurcido<span className="brand-dot">.</span></span></a>
-        <div className="mode-switch" aria-label="Choose workspace">
-          <button className={view === 'client' ? 'active' : ''} onClick={() => navigate('client')} type="button">{copy.clientMode}</button>
-          <button className={view === 'business' ? 'active' : ''} onClick={() => navigate('business')} type="button">{copy.businessMode} <span className="notification">{businessOrders.length}</span></button>
-        </div>
         <div className="profile"><div className="language-switch"><button className={isSpanish ? 'active' : ''} onClick={() => setLanguage('es')} type="button">ES</button><button className={!isSpanish ? 'active' : ''} onClick={() => setLanguage('en')} type="button">EN</button></div>{view === 'client' && <><button className={`order-link ${clientOrders.length ? 'has-order' : ''}`} type="button" onClick={() => setShowClientOrder(true)}>{copy.yourOrder}{clientOrders.length > 0 && <span className="notification">{clientOrders.length}</span>}</button><span className="avatar">AM</span><span className="profile-name">Ana Martín</span><span className="chevron">⌄</span></>}</div>
       </header>
 
