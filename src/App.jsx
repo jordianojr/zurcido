@@ -43,6 +43,7 @@ const orderEnglish = {
   'Sin indicaciones adicionales.': 'No additional instructions.',
   'Pedido enviado': 'Order submitted',
   'En proceso de entrega': 'Delivery in progress',
+  'En camino a la taquilla': 'On the way to locker',
   'Mantener el bajo original y ajustar ligeramente la pernera.': 'Keep the original hem and slightly taper the leg.',
   'Cliente pidió conservar el botón original.': 'Customer asked to keep the original button.',
   'Usar denim oscuro similar al tejido existente.': 'Use dark denim similar to the existing fabric.',
