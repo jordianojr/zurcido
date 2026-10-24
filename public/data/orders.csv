@@ -1,0 +1,5 @@
+order_id,customer,garment,service,arrival_date,deadline,pickup_date,status
+AT-1048,J. Morgan,Linen trousers,Hem + taper,2026-10-14,2026-10-18,2026-10-19,In progress
+AT-1047,S. Kim,Wool blazer,Sleeve alteration,2026-10-13,2026-10-17,2026-10-18,Ready for fitting
+AT-1046,R. Lopez,Denim jacket,Repair - elbow patch,2026-10-12,2026-10-16,2026-10-17,Awaiting approval
+AT-1044,T. Alvarez,Silk dress,Restoration,2026-10-10,2026-10-15,2026-10-16,Ready for pickup
