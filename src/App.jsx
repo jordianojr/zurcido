@@ -48,6 +48,8 @@ const orderEnglish = {
   'Tratar la mancha con cuidado antes del planchado.': 'Treat the stain carefully before pressing.',
 }
 
+const appBasePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 function loadOrders() {
   try {
     const savedOrders = JSON.parse(localStorage.getItem('zurcido-orders'))
@@ -89,7 +91,7 @@ function previousBusinessStatus(status) {
 }
 
 function App() {
-  const [view, setView] = useState(window.location.pathname.startsWith('/business') ? 'business' : 'client')
+  const [view, setView] = useState(window.location.pathname === `${appBasePath}/business` ? 'business' : 'client')
   const [language, setLanguage] = useState('en')
   const [service, setService] = useState('alteration')
   const [dropOff, setDropOff] = useState('comillas')
@@ -123,7 +125,7 @@ function App() {
   }, [clientOrders])
 
   function navigate(nextView) {
-    const path = nextView === 'business' ? '/business' : '/client'
+    const path = `${appBasePath}/${nextView}`
     window.history.pushState({}, '', path)
     setView(nextView)
   }
@@ -177,7 +179,7 @@ function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <a className="brand" href="/client" onClick={(event) => { event.preventDefault(); navigate('client') }} aria-label="Zurcido home"><span className="brand-mark">z</span><span>zurcido<span className="brand-dot">.</span></span></a>
+        <a className="brand" href={`${appBasePath}/client`} onClick={(event) => { event.preventDefault(); navigate('client') }} aria-label="Zurcido home"><span className="brand-mark">z</span><span>zurcido<span className="brand-dot">.</span></span></a>
         <div className="mode-switch" aria-label="Choose workspace">
           <button className={view === 'client' ? 'active' : ''} onClick={() => navigate('client')} type="button">{copy.clientMode}</button>
           <button className={view === 'business' ? 'active' : ''} onClick={() => navigate('business')} type="button">{copy.businessMode} <span className="notification">{businessOrders.length}</span></button>
