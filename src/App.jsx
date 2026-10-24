@@ -124,6 +124,22 @@ function App() {
     localStorage.setItem('zurcido-client-orders', JSON.stringify(clientOrders))
   }, [clientOrders])
 
+  useEffect(() => {
+    function syncStoredOrders(event) {
+      if (event.key === 'zurcido-orders' && event.newValue) {
+        const storedBusinessOrders = JSON.parse(event.newValue)
+        if (Array.isArray(storedBusinessOrders)) setBusinessOrders(storedBusinessOrders)
+      }
+      if (event.key === 'zurcido-client-orders' && event.newValue) {
+        const storedClientOrders = JSON.parse(event.newValue)
+        if (Array.isArray(storedClientOrders)) setClientOrders(storedClientOrders)
+      }
+    }
+
+    window.addEventListener('storage', syncStoredOrders)
+    return () => window.removeEventListener('storage', syncStoredOrders)
+  }, [])
+
   function navigate(nextView) {
     const path = `${appBasePath}/${nextView}`
     window.history.pushState({}, '', path)
